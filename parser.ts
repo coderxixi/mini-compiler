@@ -4,11 +4,11 @@ export enum NodeType {
   Number, CallExpression
 }
 
-type ChildNode = NumberNode | CallExpressionNode
+export type ChildNode = NumberNode | CallExpressionNode
 interface Node {
   type: NodeType
 }
-interface RootNode extends Node {
+export interface RootNode extends Node {
   body: ChildNode[]
 }
 
