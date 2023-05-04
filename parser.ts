@@ -1,10 +1,12 @@
 import { Token, TokenTYpes } from "./tokenizer"
 export enum NodeType {
   Root,
-  Number, CallExpression
+  Number, 
+  CallExpression,
+  NumberLiteral,
+  Program
 }
 
-export type ChildNode = NumberNode | CallExpressionNode
 interface Node {
   type: NodeType
 }
@@ -12,14 +14,15 @@ export interface RootNode extends Node {
   body: ChildNode[]
 }
 
-interface NumberNode extends Node {
+export  interface NumberNode extends Node {
   value: string
 }
-interface CallExpressionNode extends Node {
+export interface CallExpressionNode extends Node {
   name: string,
   params: ChildNode[]
 }
 
+export type ChildNode = NumberNode | CallExpressionNode
 function createRootNode(): RootNode {
   return {
     type: NodeType.Root,
